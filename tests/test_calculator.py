@@ -1,10 +1,14 @@
 import json
+import os
 from calculator import add
 
-
 def test_cases_from_json():
+    # Obtener la carpeta del test
+    test_dir = os.path.dirname(__file__)
+    # Subir un nivel para llegar a la raíz y abrir test_cases.json
+    file_path = os.path.join(test_dir, "..", "test_cases.json")
 
-    with open("test_cases.json") as f:
+    with open(file_path) as f:
         test_cases = json.load(f)
 
     for case in test_cases:
