@@ -1,13 +1,14 @@
+import json
 from calculator import add
 
 
-def test_add_positive():
-    assert add(2, 3) == 5
+def test_cases_from_json():
 
+    with open("test_cases.json") as f:
+        test_cases = json.load(f)
 
-def test_add_negative():
-    assert add(-2, -3) == -5
+    for case in test_cases:
+        a, b = case["input"]
+        expected = case["expected"]
 
-
-def test_add_zero():
-    assert add(5, 0) == 5
+        assert add(a, b) == expected
